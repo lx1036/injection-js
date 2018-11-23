@@ -1,0 +1,1 @@
+**[Angular deprecates ReflectiveInjector and introduces StaticInjector. Should you care?](https://blog.angularindepth.com/angular-introduces-staticinjector-should-you-care-4e059eca030c)**
