@@ -1,6 +1,9 @@
 {
-  "spec_dir": "dist-test",
+  "spec_dir": "dist-karma",
   "spec_files": [
     "**/*_spec.js"
-  ]
+  ],
+  "helpers": [
+  ],
+  "stopSpecOnExpectationFailure": false
 }

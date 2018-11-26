@@ -395,7 +395,7 @@ describe('instantiate', () => {
   });
 });
 
-describe('depedency resolution', () => {
+describe('dependency resolution', () => {
   describe('@Self()', () => {
     it('should return a dependency from self', () => {
       const inj = ReflectiveInjector.resolveAndCreate([

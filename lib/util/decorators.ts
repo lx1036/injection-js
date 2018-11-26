@@ -262,8 +262,12 @@ export function makeDecorator(
   chainFn?: (fn: Function) => void
 ): (...args: any[]) => (cls: any) => any {
   const metaCtor = makeMetadataCtor([props]);
+  
+  console.log(metaCtor);
 
   function DecoratorFactory(objOrType: any): (cls: any) => any {
+    console.log(objOrType);
+    
     if (!(Reflect && Reflect.getOwnMetadata)) {
       throw 'reflect-metadata shim is required when using class decorators';
     }
@@ -274,14 +278,19 @@ export function makeDecorator(
     }
 
     const annotationInstance = new (<any>DecoratorFactory)(objOrType);
+    console.log(annotationInstance, objOrType);
+    
     const chainAnnotation = typeof this === 'function' && Array.isArray(this.annotations) ? this.annotations : [];
     chainAnnotation.push(annotationInstance);
+    console.log(chainAnnotation);
+    
     const TypeDecorator: TypeDecorator = <TypeDecorator>function TypeDecorator(cls: Type<any>) {
       const annotations = Reflect.getOwnMetadata('annotations', cls) || [];
       annotations.push(annotationInstance);
       Reflect.defineMetadata('annotations', annotations, cls);
       return cls;
     };
+    
     TypeDecorator.annotations = chainAnnotation;
     TypeDecorator.Class = Class;
     if (chainFn) chainFn(TypeDecorator);

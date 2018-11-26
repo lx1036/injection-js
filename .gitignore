@@ -32,5 +32,6 @@ dist
 
 demo/dist
 demo/vendor
-dist
 dist-test
+dist-karma
+tmp
